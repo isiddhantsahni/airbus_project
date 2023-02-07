@@ -4,10 +4,12 @@ import os
 import aws_cdk as cdk
 
 from airbus_project.airbus_project_stack import AirbusProjectStack
+from stack.pipeline.airbus_pipeline_stack import AirbusPipelineStack
 
 
 app = cdk.App()
-AirbusProjectStack(app, "AirbusProjectStack",
+AirbusPipelineStack(app, "AirbusPipelineStack", )
+# AirbusProjectStack(app, "AirbusProjectStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
@@ -23,6 +25,6 @@ AirbusProjectStack(app, "AirbusProjectStack",
     #env=cdk.Environment(account='123456789012', region='us-east-1'),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+    # )
 
 app.synth()
