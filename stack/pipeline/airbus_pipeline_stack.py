@@ -47,7 +47,7 @@ class AirbusPipelineStack(Stack):
                 action_name="Build",
                 project=buildProject,
                 input=source_output,
-                type=aws_codepipeline_actions.CodeBuildActionType.BUILD
+                # type=aws_codepipeline_actions.CodeBuildActionType.BUILD
             )]
         )
 
