@@ -1,0 +1,29 @@
+version: 0.2
+    
+phases:   
+  install:
+    runtime-versions:
+      nodejs: 12
+      
+  pre_build:
+    commands:
+      - npm install -g aws-cdk
+      # - cdk doctor
+      - npm install
+      
+  build:
+    commands:
+      # - npm run build
+      # - npx jest
+      - echo Build started on `date`
+      - cdk deploy
+      
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      # - |
+      #   for envName in $(echo $ENV_NAMES | tr "," "\n")
+      #   do
+      #     echo $envName
+      #     cdk diff "*-$envName"
+      #   done
