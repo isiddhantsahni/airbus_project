@@ -22,7 +22,7 @@ class AirbusPipelineStack(Stack):
 
         buildProject = codebuild.PipelineProject(self,
                                                  "DEV Project", 
-                                                 build_spec=codebuild.BuildSpec.from_source_filename("pipeline/buildspec.yml"),
+                                                 build_spec=codebuild.BuildSpec.from_source_filename("buildspec.yml"),
                                                 # build_spec= codebuild.BuildSpec.from_object(
                                                 #     {
                                                 #         "version": "0.2",
