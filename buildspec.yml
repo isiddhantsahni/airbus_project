@@ -8,11 +8,12 @@ phases:
       
   pre_build:
     commands:
-      - npm install -g aws-cdk@1.6
-      - npm install n -g --force
+      - npm install -g aws-cdk@1.192.0
+      - npm update node 
       # - npm i aws-cdk@1.192.0
-      # - cdk doctor
+      # - cdk doctor -g --force
       - pip install -r requirements.txt 
+      - node --version
       
   build:
     commands:
