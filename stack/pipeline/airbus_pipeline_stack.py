@@ -24,8 +24,8 @@ class AirbusPipelineStack(Stack):
                                                  "DEV Project", 
                                                  build_spec=codebuild.BuildSpec.from_source_filename("buildspec.yml"),
                                                  environment= codebuild.BuildEnvironment(
-                                                    build_image=codebuild.LinuxBuildImage.AMAZON_LINUX_2_2
-                                                 )
+                                                        build_image=codebuild.LinuxBuildImage.STANDARD_6_0                                                 
+                                                    )
                                                  )
 
         # Adding Source Stage to pipeline through CodeStarConnectionsSourceAction
