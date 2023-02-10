@@ -1,7 +1,7 @@
 from aws_cdk import (
     Stack,
     aws_codepipeline as codepipeline,
-    aws_codebuild as codebuild
+    aws_codepipeline_actions
 )
 import aws_cdk
 from constructs import Construct
@@ -15,7 +15,22 @@ class AirbusPipelineStack(Stack):
 
         pipeline = codepipeline.Pipeline(self, "Airbus Pipeline", pipeline_name="Airbus Pipeline")
 
-        # Adding Source Stage to pipeline after creating a codebuild step
+        source_output = codepipeline.Artifact()
 
-        codebuild.PipelineProject()
+        # Adding Source Stage to pipeline through CodeStarConnectionsSourceAction
+
+        source_stage = pipeline.add_stage(
+            stage_name="Source",
+            actions= [aws_codepipeline_actions.CodeStarConnectionsSourceAction(
+                action_name="Source",
+                owner="isiddhantsahni",
+                repo="airbus_project",
+                branch="DEV-01",
+                connection_arn="arn:aws:codestar-connections:us-east-1:369319437787:connection/fc8e3a1a-9e77-4171-b843-e056bd6d963c",
+                output=source_output
+            )]
+        )
+        
+        
+
 
