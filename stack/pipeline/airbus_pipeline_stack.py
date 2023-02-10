@@ -20,12 +20,42 @@ class AirbusPipelineStack(Stack):
 
         # Defining DEV Stage Project
 
-        buildProject = codebuild.PipelineProject(self, 
+        buildProject = codebuild.PipelineProject(self,
                                                  "DEV Project", 
-                                                 build_spec=codebuild.BuildSpec.from_source_filename("buildspec.yml"),
+                                                #  build_spec=codebuild.BuildSpec.from_source_filename("buildspec.yml"),
+                                                build_spec= codebuild.BuildSpec.from_object(
+                                                    {
+                                                        "version": "0.2",
+                                                        "phases": {
+                                                            "install": {
+                                                                "runtime-versions": {"nodejs": "16"}
+                                                            }, 
+                                                            "pre_build":{
+                                                                "commands": [
+                                                                    "npm install -g aws-cdk",
+                                                                    "npm install",
+                                                                    "pip install -r requirements.txt",
+                                                                    "node --version",
+                                                                ]
+                                                            },
+                                                            "build": {
+                                                                "commands": [
+                                                                    "echo Hello, World!",
+                                                                    "echo Build started on `date`",
+                                                                    "cdk deploy",
+                                                                ]
+                                                            },
+                                                            "post_build": {
+                                                                "commands": [
+                                                                    "echo Build completed on `date`",
+                                                                ]
+                                                            },
+                                                        },
+                                                    }
+                                                ),
                                                  environment= codebuild.BuildEnvironment(
-                                                        build_image=codebuild.LinuxBuildImage.STANDARD_6_0                                                 
-                                                    )
+                                                            build_image=codebuild.LinuxBuildImage.STANDARD_5_0,
+                                                        )
                                                  )
 
         # Adding Source Stage to pipeline through CodeStarConnectionsSourceAction
