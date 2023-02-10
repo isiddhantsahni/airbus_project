@@ -5,19 +5,18 @@ phases:
     runtime-versions:
       nodejs: 14
       python: latest
+       "n 16.15.1"
       
   pre_build:
     commands:
       - npm install -g aws-cdk
       - npm install
-      # - npm i aws-cdk@1.192.0
-      # - cdk doctor -g --force
       - pip install -r requirements.txt 
       - node --version
       
   build:
     commands:
-      - npm run build
+      # - npm run build
       - echo Build started on `date`
       - cdk deploy
       
