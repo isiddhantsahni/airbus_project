@@ -22,7 +22,7 @@ class AirbusPipelineStack(Stack):
 
         buildProject = codebuild.PipelineProject(self, 
                                                  "DEV Project", 
-                                                 build_spec=codebuild.BuildSpec.from_source_filename(filename="dev.yaml")
+                                                 build_spec=codebuild.BuildSpec.from_object(value="buildspec.yml")
                                                  )
 
         # Adding Source Stage to pipeline through CodeStarConnectionsSourceAction
