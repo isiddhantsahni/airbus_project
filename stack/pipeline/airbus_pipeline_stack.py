@@ -24,7 +24,7 @@ class AirbusPipelineStack(Stack):
                                                  "DEV Project", 
                                                  build_spec=codebuild.BuildSpec.from_source_filename("buildspec.yml"),
                                                  environment= codebuild.BuildEnvironment(
-                                                    build_image=codebuild.LinuxBuildImage.STANDARD_5_0
+                                                    build_image=codebuild.LinuxBuildImage.AMAZON_LINUX_2_2
                                                  )
                                                  )
 
