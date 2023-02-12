@@ -20,8 +20,8 @@ phases:
       - cdk deploy AirbusPipelineStack
       - cdk deploy AirbusPipelineStack/dev
       - cdk deploy AirbusPipelineStack/dev/AirbusS3Stack --require-approval never
-      - cdk deploy AirbusPipelineStack/dev/AirbusEC2Stack
-      - cdk deploy AirbusPipelineStack/dev/AirbusLambdaStack
+      - cdk deploy AirbusPipelineStack/dev/AirbusEC2Stack --require-approval never
+      - cdk deploy AirbusPipelineStack/dev/AirbusLambdaStack --require-approval never
       
   post_build:
     commands:
