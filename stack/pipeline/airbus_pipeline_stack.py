@@ -85,11 +85,19 @@ class AirbusPipelineStack(Stack):
             )]
         )
 
-        pipeline.add_to_role_policy(iam.PolicyStatement(
+        # pipeline.add_to_role_policy(iam.PolicyStatement(
+        #     effect=iam.Effect.ALLOW,
+        #     resources=['*'],
+        #     actions=['cloudformation:DescribeStacks',
+        #              'cloudformation:CreateStack',
+        #              ],
+        # ))
+
+        
+        buildProject.add_to_role_policy(iam.PolicyStatement(
             effect=iam.Effect.ALLOW,
             resources=['*'],
             actions=['cloudformation:DescribeStacks',
                      'cloudformation:CreateStack',
                      ],
         ))
-
