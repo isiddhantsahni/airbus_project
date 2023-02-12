@@ -102,6 +102,8 @@ class AirbusPipelineStack(Stack):
                      'cloudformation:GetTemplate',
                      'cloudformation:DeleteChangeSet',
                      'cloudformation:CreateChangeSet',
+                     'cloudformation:DescribeChangeSet',
+                     'cloudformation:*',
                      'ssm:GetParameter',
                      's3:*',
                      'iam:PassRole',
