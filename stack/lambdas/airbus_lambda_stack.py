@@ -34,7 +34,7 @@ class AirbusLambdaStack(Stack):
         ))
 
         #Import S3 Bucket
-        imported_s3_bucket = s3.Bucket.from_bucket_name(self,"Airbus Bucket","airbus-bucket")
+        imported_s3_bucket = s3.Bucket.from_bucket_name(self,"Airbus Bucket","airbus-final-bucket")
 
         imported_s3_bucket.grant_read_write(lambda_func)
 

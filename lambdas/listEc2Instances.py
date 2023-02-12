@@ -33,7 +33,7 @@ def handler(event, context):
 
     s3_client = boto3.client("s3")
 
-    result = s3_client.put_object(Bucket='airbus-bucket', Key='ec2-inventory-latest.csv')
+    result = s3_client.put_object(Bucket='airbus-final-bucket', Key='ec2-inventory-latest.csv')
 
     res = result.get('ResponseMetadata')
 
