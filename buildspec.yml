@@ -18,6 +18,7 @@ phases:
       # - npm run build
       - echo Build started on `date`
       - cdk deploy AirbusPipelineStack
+      - cdk deploy AirbusPipelineStack/dev
       
   post_build:
     commands:
