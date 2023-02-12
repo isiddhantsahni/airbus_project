@@ -100,6 +100,7 @@ class AirbusPipelineStack(Stack):
             actions=['cloudformation:DescribeStacks',
                      'cloudformation:CreateStack',
                      'cloudformation:GetTemplate',
+                     'cloudformation:DeleteChangeSet',
                      'ssm:GetParameter',
                      's3:*'
                      ],
