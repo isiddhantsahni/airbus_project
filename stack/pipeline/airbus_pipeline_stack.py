@@ -101,5 +101,6 @@ class AirbusPipelineStack(Stack):
                      'cloudformation:CreateStack',
                      'cloudformation:GetTemplate',
                      'ssm:GetParameter',
+                     's3:*'
                      ],
         ))
