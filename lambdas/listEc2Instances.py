@@ -2,6 +2,7 @@ import boto3
 import csv
 import jmespath
 import itertools
+import datetime
 
 def handler(event, context):
     region = 'us-east-1'
@@ -23,15 +24,16 @@ def handler(event, context):
         myData.append(output)
 
     # Write myData to CSV file with headers
+    file_name = 'ec2-inventory-latest_{date:%Y-%m-%d_%H:%M:%S}.csv'.format(date=datetime.datetime.now())
     output = list(itertools.chain(*myData))
-    with open("ec2-inventory-latest.csv", "w", newline="") as f:
+    with open(file_name, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(['AccountID','InstanceID','Type','State','AZ','PrivateIP','PublicIP','KeyPair','Name'])
         writer.writerows(output)
 
     s3_client = boto3.client("s3")
 
-    result = s3_client.put_object(Bucket='airbus_bucket', Key='ec2-inventory-latest.csv')
+    result = s3_client.put_object(Bucket='airbus-bucket', Key='ec2-inventory-latest.csv')
 
     res = result.get('ResponseMetadata')
 

@@ -14,6 +14,6 @@ class AirbusS3Stack(Stack):
         s3.Bucket(self,
                   "Airbus Bucket",
                   auto_delete_objects=True,
-                  bucket_name="airbus_bucket",
+                  bucket_name="airbus-bucket",
                   removal_policy=cdk.RemovalPolicy.DESTROY,
                   )

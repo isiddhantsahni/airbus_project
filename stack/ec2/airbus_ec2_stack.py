@@ -10,7 +10,8 @@ class AirbusEC2Stack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         #VPC
-        vpc = ec2.Vpc(self,"Airbus VPC for EC2",subnet_configuration=ec2.SubnetConfiguration(cidr_mask=24, name='Ingress', subnet_type=ec2.SubnetType.PRIVATE_ISOLATED))
+        vpc = ec2.Vpc(self,"Airbus VPC for EC2")
+        #,subnet_configuration=ec2.SubnetConfiguration(cidr_mask=24, name='Ingress', subnet_type=ec2.SubnetType.PRIVATE_ISOLATED)
 
         #Security Group
         my_security_group = ec2.SecurityGroup(self, "Airbus Security Group",

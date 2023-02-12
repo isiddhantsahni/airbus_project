@@ -112,4 +112,4 @@ class AirbusPipelineStack(Stack):
                      ],
         ))
 
-        dev_build = AirbusResourcesStack(self,"Dev setup")
+        dev_build = AirbusResourcesStack(self,"dev")
