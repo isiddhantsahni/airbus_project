@@ -19,7 +19,7 @@ phases:
       - echo Build started on `date`
       - cdk deploy AirbusPipelineStack
       - cdk deploy AirbusPipelineStack/dev
-      - cdk deploy AirbusPipelineStack/dev/AirbusS3Stack
+      - cdk deploy AirbusPipelineStack/dev/AirbusS3Stack --require-approval never
       - cdk deploy AirbusPipelineStack/dev/AirbusEC2Stack
       - cdk deploy AirbusPipelineStack/dev/AirbusLambdaStack
       
