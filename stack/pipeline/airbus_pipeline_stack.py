@@ -2,7 +2,8 @@ from aws_cdk import (
     Stack,
     aws_codepipeline as codepipeline,
     aws_codepipeline_actions,
-    aws_codebuild as codebuild
+    aws_codebuild as codebuild,
+    aws_iam as iam
 )
 import aws_cdk
 from constructs import Construct
@@ -84,4 +85,11 @@ class AirbusPipelineStack(Stack):
             )]
         )
 
+        pipeline.add_to_role_policy(iam.PolicyStatement(
+            effect=iam.Effect.ALLOW,
+            resources=['*'],
+            actions=['cloudformation:DescribeStacks',
+                     'cloudformation:CreateStack',
+                     ],
+        ))
 
