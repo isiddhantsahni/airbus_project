@@ -11,10 +11,10 @@ class AirbusResourcesStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        airbus_ec2_stack = AirbusEC2Stack(self,"Airbus EC2 Stack")
+        airbus_ec2_stack = AirbusEC2Stack(self,"AirbusEC2Stack")
 
-        airbus_s3_stack = AirbusS3Stack(self,"Airbus S3 Stack")
+        airbus_s3_stack = AirbusS3Stack(self,"AirbusS3Stack")
 
-        airbus_lambda_stack = AirbusLambdaStack(self,"Airbus Lambda Function Stack")
+        airbus_lambda_stack = AirbusLambdaStack(self,"AirbusLambdaStack")
 
         
