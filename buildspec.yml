@@ -17,7 +17,7 @@ phases:
     commands:
       # - npm run build
       - echo Build started on `date`
-      - cdk deploy AirbusPipelineStack/dev
+      - cdk deploy AirbusPipelineStack
       - cdk deploy AirbusPipelineStack/dev/Airbus S3 Stack
       - cdk deploy AirbusPipelineStack/dev/Airbus EC2 Stack
       - cdk deploy AirbusPipelineStack/dev/Airbus Lambda Function Stack
