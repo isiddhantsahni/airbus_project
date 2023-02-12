@@ -8,6 +8,8 @@ from aws_cdk import (
 import aws_cdk
 from constructs import Construct
 
+from stack.resources.airbus_resources_stack import AirbusResourcesStack
+
 class AirbusPipelineStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
@@ -109,3 +111,5 @@ class AirbusPipelineStack(Stack):
                      'iam:PassRole',
                      ],
         ))
+
+        dev_build = AirbusResourcesStack(self,"Dev setup")
