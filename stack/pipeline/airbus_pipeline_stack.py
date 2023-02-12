@@ -99,5 +99,7 @@ class AirbusPipelineStack(Stack):
             resources=['*'],
             actions=['cloudformation:DescribeStacks',
                      'cloudformation:CreateStack',
+                     'cloudformation:GetTemplate',
+                     'ssm:GetParameter',
                      ],
         ))
