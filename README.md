@@ -67,4 +67,4 @@ source_stage = pipeline.add_stage(
 
 
 ## CSV File Example
-[ec2-inventory-latest.csv](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/csv.PNG)
+![ec2-inventory-latest.csv](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/csv.PNG)
