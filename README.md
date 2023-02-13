@@ -11,9 +11,9 @@ A connection with the github repo had to be made so that whenever a new commit i
 
 ## Architecture
 
-![CodePipeline Project Arch](images\Codepipeline.png)
+![CodePipeline Project Arch](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Codepipeline.png)
 
-[Application Architecture](images\Application Architecture.png)
+![Application Architecture](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Application%20Architecture.png)
 
 ## Deploying the project to any AWS Account
 
@@ -30,11 +30,11 @@ $ git clone https://github.com/isiddhantsahni/airbus_project.git
 
 3. Create a connection with your github repo in AWS CodePipeline:
 
-[CodePipeline Connection](images\Connection.PNG)
+![CodePipeline Connection](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Connection.PNG)
 
 Click Create connection, choose GitHub, mention any name. Next, Click on Install a new app, and at the end choose connect. You'll see a connection made like below:
 
-[CodePipeline Connection](images\Connection1.PNG)
+![CodePipeline Connection](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Connection1.PNG)
 
 [Replace the connection ARN in the source stage in the pipeline stack. Also replace other parameters.]
 
@@ -56,15 +56,15 @@ source_stage = pipeline.add_stage(
 
 5. In app.py replace the account number and region for your account.
 
-[App.py Environment](images\environment.PNG)
+![App.py Environment](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/environment.PNG)
 
 6. RUN ```cdk deploy AirbusPipelineStack``` in command line in the respective IDE to deploy the application.(Eg. Visual Studio Code)
 
 [After the codepipeline runs successfully, the lambda function will run each day at 12PM UTC and save the csv file to the s3 bucket. Any further commits to the branch will trigger the pipeline for auto updation.]
 
 ## S3 Location
-[s3](images\s3.PNG)
+![s3](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/s3.PNG)
 
 
 ## CSV File Example
-[ec2-inventory-latest.csv](images\csv.PNG)
+[ec2-inventory-latest.csv](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/csv.PNG)
