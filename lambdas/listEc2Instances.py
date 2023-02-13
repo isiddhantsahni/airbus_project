@@ -26,18 +26,24 @@ def handler(event, context):
     # Write myData to CSV file with headers
     file_name = 'ec2-inventory-latest_{date:%Y-%m-%d_%H:%M:%S}.csv'.format(date=datetime.datetime.now())
     output = list(itertools.chain(*myData))
-    with open(file_name, "w", newline="") as f:
+    with open('/tmp/'+file_name, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerow(['AccountID','InstanceID','Type','State','AZ','PrivateIP','PublicIP','KeyPair','Name'])
         writer.writerows(output)
-
+        
+    with open('/tmp/'+file_name, 'r') as f1:
+        content = f.read()
+    print(content)
+    
     s3_client = boto3.client("s3")
 
-    result = s3_client.put_object(Bucket='airbus-final-bucket', Key='ec2-inventory-latest.csv')
+    result = s3_client.put_object(Bucket='airbus-final-bucket', Key=file_name, Body=content)
 
     res = result.get('ResponseMetadata')
+    
+    print(res.get('HTTPStatusCode'))
 
     if res.get('HTTPStatusCode') == 200:
-        return 'File Uploaded Succesfully'
+        print('File Uploaded Succesfully')
     else:
-        return 'File Not Uploaded'
+        print('File Not Uploaded')

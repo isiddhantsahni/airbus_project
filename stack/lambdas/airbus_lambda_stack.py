@@ -20,7 +20,8 @@ class AirbusLambdaStack(Stack):
             code=_lambda.Code.from_asset('lambdas'),
             handler="listEc2Instances.handler",
             runtime=_lambda.Runtime.PYTHON_3_9,
-            function_name="airbus-lambda-function"
+            function_name="airbus-lambda-function",
+            timeout=cdk.Duration.minutes(1)
         )
 
         lambda_func.add_to_role_policy(iam.PolicyStatement(
@@ -43,6 +44,7 @@ class AirbusLambdaStack(Stack):
         lambda_rule = events.Rule(self,
                     "Event Rule for Lambda Function",
                     description= "Event Rule to trigger the Airbus Lambda Function",
-                    schedule=events.Schedule.rate(cdk.Duration.minutes(10)),
+                    #Scheduled for 12PM UTC Each day
+                    schedule=events.Schedule.cron("0 12 * * ? *"),
                     targets=[event_targets.LambdaFunction(lambda_func)]
                     )
