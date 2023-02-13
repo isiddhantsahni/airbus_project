@@ -46,7 +46,7 @@ source_stage = pipeline.add_stage(
                 owner="isiddhantsahni",
                 repo="airbus_project",
                 branch="DEV-01",
-                connection_arn="arn:aws:codestar-connections:us-east-1:",
+                connection_arn="arn:aws:codestar-connections:us-east-1:36911111111:connection/fc8e3a1a-9e77-4171-b843-e056bd6d963c",
                 output=source_output
             )]
         )
