@@ -1,7 +1,7 @@
 
 # Airbus Coding Challenge
 
-##Introduction
+## Introduction
 
 This is a CDK project in python, different stacks have been made for the resources, namely: EC2, Lambda, Pipeline etc.
 
@@ -9,13 +9,13 @@ To add the CI/CD aspect to the project, AWS CodePipeline was used.
 
 A connection with the github repo had to be made so that whenever a new commit is made to the mentioned branch, it can trigger the codepipeline (Through webhooks). The new changes will be used for SelfMutate step of the codepipeline and be updated for the application. Through this, the devs can continuously develop the application and continuously integrate it through codebuild as well(Used in the project).
 
-##Architecture
+## Architecture
 
-[CodePipeline Project Arch](images\Codepipeline.png)
+![CodePipeline Project Arch](images\Codepipeline.png)
 
 [Application Architecture](images\Application Architecture.png)
 
-##Deploying the project to any AWS Account
+## Deploying the project to any AWS Account
 
 Prerequisites:
 Install aws cdk, aws cli, python, git, node to run the project.
@@ -62,9 +62,9 @@ source_stage = pipeline.add_stage(
 
 [After the codepipeline runs successfully, the lambda function will run each day at 12PM UTC and save the csv file to the s3 bucket. Any further commits to the branch will trigger the pipeline for auto updation.]
 
-##S3 Location
+## S3 Location
 [s3](images\s3.PNG)
 
 
-##CSV File Example
+## CSV File Example
 [ec2-inventory-latest.csv](images\csv.PNG)
