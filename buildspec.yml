@@ -1,0 +1,28 @@
+version: 0.2
+    
+phases:   
+  install:
+    runtime-versions:
+      nodejs: 14
+      # python: latest
+      
+  pre_build:
+    commands:
+      - npm install -g aws-cdk
+      - npm install
+      - pip install -r requirements.txt 
+      - node --version
+      
+  build:
+    commands:
+      # - npm run build
+      - echo Build started on `date`
+      - cdk deploy AirbusPipelineStack
+      - cdk deploy AirbusPipelineStack/dev
+      - cdk deploy AirbusPipelineStack/dev/AirbusS3Stack --require-approval never
+      - cdk deploy AirbusPipelineStack/dev/AirbusEC2Stack --require-approval never
+      - cdk deploy AirbusPipelineStack/dev/AirbusLambdaStack --require-approval never
+      
+  post_build:
+    commands:
+      - echo Build completed on `date`

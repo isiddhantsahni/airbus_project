@@ -1,0 +1,23 @@
+{
+  "name": "airbus-project",
+  "version": "1.0.0",
+  "description": "json file for airbus project",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cdk deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isiddhantsahni/airbus_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isiddhantsahni/airbus_project/issues"
+  },
+  "homepage": "https://github.com/isiddhantsahni/airbus_project#readme"
+}

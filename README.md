@@ -1,58 +1,70 @@
 
-# Welcome to your CDK Python project!
+# Airbus Coding Challenge
 
-This is a blank project for CDK development with Python.
+## Introduction
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This is a CDK project in python, different stacks have been made for the resources, namely: EC2, Lambda, Pipeline etc.
 
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
+To add the CI/CD aspect to the project, AWS CodePipeline was used. 
 
-To manually create a virtualenv on MacOS and Linux:
+A connection with the github repo had to be made so that whenever a new commit is made to the mentioned branch, it can trigger the codepipeline (Through webhooks). The new changes will be used for SelfMutate step of the codepipeline and be updated for the application. Through this, the devs can continuously develop the application and continuously integrate it through codebuild as well(Used in the project).
 
+## Architecture
+
+![CodePipeline Project Arch](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Codepipeline.png)
+
+![Application Architecture](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Application%20Architecture.png)
+
+## Deploying the project to any AWS Account
+
+Prerequisites:
+Install aws cdk, aws cli, python, git, node to run the project.
+
+1. Clone the repo into your development environment using:
 ```
-$ python -m venv .venv
+$ git clone https://github.com/isiddhantsahni/airbus_project.git
+```
+[Then push the git repo to your own account]
+
+2. Run ```cdk bootstrap aws://ACCOUNT-NUMBER/REGION``` (If the aws account already hasn't been bootstraped, do this through the command mentioned. Deploying stacks with the AWS CDK requires dedicated Amazon S3 buckets and other containers to be available to AWS CloudFormation during deployment. Creating these is called bootstrapping.)
+
+3. Create a connection with your github repo in AWS CodePipeline:
+
+![CodePipeline Connection](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Connection.PNG)
+
+Click Create connection, choose GitHub, mention any name. Next, Click on Install a new app, and at the end choose connect. You'll see a connection made like below:
+
+![CodePipeline Connection](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Connection1.PNG)
+
+[Replace the connection ARN in the source stage in the pipeline stack. Also replace other parameters.]
+
+```python
+source_stage = pipeline.add_stage(
+            stage_name="Source",
+            actions= [aws_codepipeline_actions.CodeStarConnectionsSourceAction(
+                action_name="Source",
+                owner="isiddhantsahni",
+                repo="airbus_project",
+                branch="DEV-01",
+                connection_arn="arn:aws:codestar-connections:us-east-1:",
+                output=source_output
+            )]
+        )
 ```
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+4. RUN ```aws configure``` and set the access key and other parameters.
 
-```
-$ source .venv/bin/activate
-```
+5. In app.py replace the account number and region for your account.
 
-If you are a Windows platform, you would activate the virtualenv like this:
+![App.py Environment](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/environment.PNG)
 
-```
-% .venv\Scripts\activate.bat
-```
+6. RUN ```cdk deploy AirbusPipelineStack``` in command line in the respective IDE to deploy the application.(Eg. Visual Studio Code)
 
-Once the virtualenv is activated, you can install the required dependencies.
+[After the codepipeline runs successfully, the lambda function will run each day at 12PM UTC and save the csv file to the s3 bucket. Any further commits to the branch will trigger the pipeline for auto updation.]
 
-```
-$ pip install -r requirements.txt
-```
+## S3 Location
+![s3](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/s3.PNG)
 
-At this point you can now synthesize the CloudFormation template for this code.
 
-```
-$ cdk synth
-```
-
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-Enjoy!
+## CSV File Example
+![ec2-inventory-latest.csv](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/csv.PNG)
