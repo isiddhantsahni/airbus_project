@@ -58,19 +58,19 @@ class AirbusPipelineStack(Stack):
             )]
         )
 
-        # Adding self-mutate Stage
+        # # Adding self-mutate Stage
 
-        update_stage = aws_codepipeline_actions.CloudFormationCreateUpdateStackAction(
-            action_name="Self-Mutate",
-            template_path=source_output.at_path("template.yml"),
-            stack_name="AirbusPipelineStack",
-            admin_permissions=True,
-        )
+        # update_stage = aws_codepipeline_actions.CloudFormationCreateUpdateStackAction(
+        #     action_name="Self-Mutate",
+        #     template_path=source_output.at_path("template.yml"),
+        #     stack_name="AirbusPipelineStack",
+        #     admin_permissions=True,
+        # )
 
-        self_mutate_stage = pipeline.add_stage(
-            stage_name="Self-Mutate",
-            actions=[update_stage]
-        )
+        # self_mutate_stage = pipeline.add_stage(
+        #     stage_name="Self-Mutate",
+        #     actions=[update_stage]
+        # )
 
         
         buildProject.add_to_role_policy(iam.PolicyStatement(
