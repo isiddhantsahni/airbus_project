@@ -7,7 +7,7 @@ from stack.pipeline.airbus_pipeline_stack import AirbusPipelineStack
 
 
 app = cdk.App()
-AirbusPipelineStack(app, "AirbusPipelineStack", env=cdk.Environment(account='369319437787', region='us-east-1'))
+AirbusPipelineStack(app, "AirbusPipelineStack", env=cdk.Environment(account='36111111111111', region='us-east-1'))
 # AirbusProjectStack(app, "AirbusProjectStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,

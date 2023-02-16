@@ -40,7 +40,7 @@ class AirbusPipelineStack(Stack):
                 owner="isiddhantsahni",
                 repo="airbus_project",
                 branch="DEV-01",
-                connection_arn="arn:aws:codestar-connections:us-east-1:369319437787:connection/53a56bf4-44d3-4c31-b432-d136b3a6185d",
+                connection_arn="arn:aws:codestar-connections:us-east-1:361111111111:connection/53a56bf4-44d3-4c31-b432-d136b3a6185d",
                 output=source_output
             )]
         )

@@ -62,9 +62,27 @@ source_stage = pipeline.add_stage(
 
 [After the codepipeline runs successfully, the lambda function will run each day at 12PM UTC and save the csv file to the s3 bucket. Any further commits to the branch will trigger the pipeline for auto updation.]
 
+## CodePipeline Image
+![Codepipeline](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/CodePipeline_img.png)
+
+After successfully running.
+
+## Lambda Function
+![Lambda](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/Lambda_Function.PNG)
+
 ## S3 Location
 ![s3](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/s3.PNG)
 
 
 ## CSV File Example
 ![ec2-inventory-latest.csv](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/csv.PNG)
+
+## Test Cases
+To run test cases on local run command ```pytest```
+
+In buildspec.yml file, the post-build step contains the ```pytest``` command to run the unit test cases in the ```\tests``` folder.
+
+![Postbuild](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/buildspec_postbuild.PNG)
+
+Below is the CodeBuild logs for the end which showcases the test cases running successfully.
+![CodeBuild_test](https://github.com/isiddhantsahni/airbus_project/blob/DEV-01/images/CodeBuild_Test.PNG)
