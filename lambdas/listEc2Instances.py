@@ -3,6 +3,8 @@ import csv
 import jmespath
 import itertools
 import datetime
+import json
+import os
 
 def handler(event, context):
     region = 'us-east-1'
@@ -24,7 +26,7 @@ def handler(event, context):
         myData.append(output)
 
     # Write myData to CSV file with headers
-    file_name = 'ec2-inventory-latest_{date:%Y-%m-%d_%H:%M:%S}.csv'.format(date=datetime.datetime.now())
+    file_name = 'ec2-inventory-latest_{date:%Y-%m-%d_%H-%M-%S}.csv'.format(date=datetime.datetime.now())
     output = list(itertools.chain(*myData))
     with open('/tmp/'+file_name, "w", newline="") as f:
         writer = csv.writer(f)
@@ -45,5 +47,14 @@ def handler(event, context):
 
     if res.get('HTTPStatusCode') == 200:
         print('File Uploaded Succesfully')
+        return{   
+        'statusCode': 200,
+        # 'body': json.dumps({'message':'File Uploaded Succesfully'})
+        'body':'File Uploaded Succesfully'
+        }
     else:
         print('File Not Uploaded')
+        return{   
+        'statusCode': 404,
+        'body': 'File Not Uploaded'
+        }
