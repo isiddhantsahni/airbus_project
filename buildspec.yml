@@ -26,3 +26,5 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - echo Running Test cases
+      - pytest
