@@ -17,8 +17,8 @@ phases:
     commands:
       # - npm run build
       - echo Build started on `date`
-      - cdk deploy AirbusPipelineStack
-      - cdk deploy AirbusPipelineStack/dev
+      - cdk deploy AirbusPipelineStack --require-approval never
+      - cdk deploy AirbusPipelineStack/dev --require-approval never
       - cdk deploy AirbusPipelineStack/dev/AirbusS3Stack --require-approval never
       - cdk deploy AirbusPipelineStack/dev/AirbusEC2Stack --require-approval never
       - cdk deploy AirbusPipelineStack/dev/AirbusLambdaStack --require-approval never
