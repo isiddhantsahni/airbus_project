@@ -32,7 +32,7 @@ def handler(event, context):
         writer.writerows(output)
         
     with open('/tmp/'+file_name, 'r') as f1:
-        content = f.read()
+        content = f1.read()
     print(content)
     
     s3_client = boto3.client("s3")
