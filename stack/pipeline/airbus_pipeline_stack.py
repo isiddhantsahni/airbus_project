@@ -45,6 +45,19 @@ class AirbusPipelineStack(Stack):
             )]
         )
         
+        # Adding Build Stage
+        build_output = codepipeline.Artifact("BuildOutput")
+        build_stage = pipeline.add_stage(
+            stage_name="Build",
+            actions=[aws_codepipeline_actions.CodeBuildAction(
+                action_name="Build",
+                project=buildProject,
+                input=source_output,
+                outputs=[build_output],
+                # type=aws_codepipeline_actions.CodeBuildActionType.BUILD
+            )]
+        )
+
         # Adding self-mutate Stage
 
         update_stage = aws_codepipeline_actions.CloudFormationCreateUpdateStackAction(
@@ -57,19 +70,6 @@ class AirbusPipelineStack(Stack):
         self_mutate_stage = pipeline.add_stage(
             stage_name="Self-Mutate",
             actions=[update_stage]
-        )
-
-        # Adding Build Stage
-        build_output = codepipeline.Artifact("BuildOutput")
-        build_stage = pipeline.add_stage(
-            stage_name="Build",
-            actions=[aws_codepipeline_actions.CodeBuildAction(
-                action_name="Build",
-                project=buildProject,
-                input=source_output,
-                outputs=[build_output],
-                # type=aws_codepipeline_actions.CodeBuildActionType.BUILD
-            )]
         )
 
         
