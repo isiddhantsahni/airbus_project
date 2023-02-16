@@ -3,7 +3,6 @@ import os
 
 import aws_cdk as cdk
 
-from airbus_project.airbus_project_stack import AirbusProjectStack
 from stack.pipeline.airbus_pipeline_stack import AirbusPipelineStack
 
 
