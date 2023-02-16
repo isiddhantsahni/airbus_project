@@ -46,6 +46,6 @@ class AirbusLambdaStack(Stack):
                     description= "Event Rule to trigger the Airbus Lambda Function",
                     #Scheduled for 12PM UTC Each day
                     # schedule=events.Schedule.cron(minute="0",hour="12",day="*",month="*",year="*"),
-                    schedule=events.Schedule.rate(cdk.Duration.minutes(10)),
+                    schedule=events.Schedule.rate(cdk.Duration.minutes(5)),
                     targets=[event_targets.LambdaFunction(lambda_func)]
                     )
