@@ -49,11 +49,12 @@ def handler(event, context):
         print('File Uploaded Succesfully')
         return{   
         'statusCode': 200,
-        'body': json.dumps({'File Uploaded Succesfully'})
+        # 'body': json.dumps({'message':'File Uploaded Succesfully'})
+        'body':'File Uploaded Succesfully'
         }
     else:
         print('File Not Uploaded')
         return{   
         'statusCode': 404,
-        'body': json.dumps({'File Not Uploaded'})
+        'body': 'File Not Uploaded'
         }
