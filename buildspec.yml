@@ -28,3 +28,4 @@ phases:
       - echo Build completed on `date`
       - echo Running Test cases
       - pytest
+      - echo Testing completed on `date`
